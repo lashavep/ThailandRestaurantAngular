@@ -1,0 +1,54 @@
+.promo-container {
+  max-width: 600px;
+  margin: 20px auto;
+  background: #f9f9f900;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.promo-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+input:focus, textarea:focus {
+  border-color: #ac6d32;
+  outline: none;
+}
+
+.btn-send {
+  width: 100%;
+  padding: 12px;
+  background: #c25313;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-send:hover {
+  background: #a35d24;
+}

@@ -1,0 +1,14 @@
+<h2>{{ 'admin.users.promote' | translate }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()" class="form-grid">
+    <label>{{ 'admin.users.form.emailLabel' | translate }}</label>
+    <input formControlName="email" type="email" />
+
+    <label>{{ 'admin.users.form.roleLabel' | translate }}</label>
+    <select formControlName="newRole">
+        <option value="User">{{ 'admin.users.form.roles.user' | translate }}</option>
+        <option value="Admin">{{ 'admin.users.form.roles.admin' | translate }}</option>
+    </select>
+
+    <button type="submit">{{ 'admin.promote.submit' | translate }}</button>
+</form>

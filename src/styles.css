@@ -1,0 +1,118 @@
+@font-face {
+  font-family: kartuli;
+  src: url(../public/fonts/bpg_ucnobi.otf);
+}
+
+*{
+  box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+    
+}
+
+body {
+    background-color: burlywood;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    
+    
+}
+
+.playwrite-gb-s-italic {
+  font-family: "Playwrite GB S", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+}
+
+app-faq{
+  max-width: 50% !important;
+  margin-top: 120px;
+}
+
+:root {
+  --background-color: burlywood;
+  --text-color: #000000;
+  --primary-color: #6200ee;
+}
+
+[data-theme='dark'] {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --primary-color: #bb86fc;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.edit-product-swal label {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+
+.edit-product-swal .swal2-input,
+.edit-product-swal .swal2-select {
+  width: 50% !important;
+  padding: 0.6rem;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 0.1rem;
+}
+
+.edit-product-swal .swal2-input:focus,
+.edit-product-swal .swal2-select:focus {
+  border-color: #c27126;
+  outline: none;
+  box-shadow: 0 0 4px rgba(194, 113, 38, 0.4);
+}
+
+.edit-product-swal-confirm {
+  background-color: #c27126 !important;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+}
+
+.edit-product-swal-confirm:hover {
+  background-color: #a85a1f !important;
+}
+
+.edit-product-swal-cancel {
+  background-color: #ddd !important;
+  color: #333 !important;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+}
+
+.edit-product-swal-cancel:hover {
+  background-color: #bbb !important;
+}
+
+.toast-container {
+  position: fixed !important;
+  z-index: 9999 !important;
+}
+
+/* ზედა მარჯვენა კუთხე */
+.toast-top-right {
+  top: 15rem !important;
+  right: 1rem !important;
+}
+
+

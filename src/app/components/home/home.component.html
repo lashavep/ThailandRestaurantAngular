@@ -1,0 +1,23 @@
+<app-loader class="loader" *ngIf="isLoading"></app-loader>
+<main class="home-main">
+    <section class="ordering">
+        <!-- <h3 class="ordering-title">{{ 'home.FoodCategories' | translate }}</h3> -->
+        <div class="categories">
+            <app-categories [categories]="categories" (selected)="selectCategory($event)"></app-categories>
+        </div>
+        <div class="products">
+            <app-filter (filter)="filterProducts($event)"></app-filter>
+            <app-product-list [products]="products" [isLoaded]="isLoaded" [currentPage]="currentPage"
+                [pageSize]="pageSize"></app-product-list>
+        </div>
+        <div class="pagination-controls" *ngIf="products.length > pageSize">
+            <button (click)="goToPage(1)" [disabled]="currentPage === 1">{{ 'pagination.First' | translate }}</button>
+            <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">{{ 'pagination.Prev' | translate }}</button>
+
+            <span>{{ 'pagination.Page' | translate }} {{ currentPage }} {{ 'pagination.Of' | translate }} {{ totalPages }}</span>
+
+            <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">{{ 'pagination.Next' | translate }}</button>
+            <button (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages">{{ 'pagination.Last' | translate }}</button>
+        </div>
+    </section>
+</main>

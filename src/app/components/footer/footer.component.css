@@ -1,0 +1,159 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: #333;
+    gap: 30px;
+}
+
+footer .main {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+footer .contactinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+
+@media (min-width: 768px) {
+    footer .contactinfo {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+footer .footer-section {
+    color: #aaa;
+    text-align: center;
+    max-width: 300px;
+    font-family: "Playwrite GB S", cursive;
+}
+
+footer .footer-section h2 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-family: "Playwrite GB S", cursive;
+}
+
+footer .footer-section p {
+    color: #ddd;
+    font-size: 14px;
+    margin: 4px 0;
+    font-family: "Playwrite GB S", cursive;
+}
+
+footer .footer-section a {
+    color: #c2780a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .footer-section a:hover {
+    color: #e0911a;
+    text-decoration: underline;
+}
+
+footer .right {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+footer .card {
+    display: flex;
+    height: 50px;
+    width: 250px;
+}
+
+footer .card svg {
+    position: absolute;
+    display: flex;
+    width: 30%;
+    height: 100%;
+    font-size: 24px;
+    font-weight: 700;
+    opacity: 1;
+    transition: opacity 0.25s;
+    z-index: 2;
+    cursor: pointer;
+    transform: scale(1);
+}
+
+footer .card .social-link1,
+footer .card .social-link2,
+footer .card .social-link3,
+footer .card .social-link4 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    color: whitesmoke;
+    font-size: 24px;
+    text-decoration: none;
+    transition: 0.25s;
+    border-radius: 60px;
+    
+    
+}
+
+footer .card .social-link1:hover,
+footer .card .social-link2:hover,
+footer .card .social-link3:hover,
+footer .card .social-link4:hover {
+    background-color: #c2780a;
+    animation: bounce_613 0.4s linear;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+footer .container p {
+    color: #aaa;
+    font-size: 14px;
+}
+
+@keyframes bounce_613 {
+    40% {
+        transform: scale(1.4);
+    }
+
+    60% {
+        transform: scale(0.8);
+    }
+
+    80% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    footer .footer-section {
+        text-align: center;
+        max-width: 90%;
+    }
+
+    footer .card {
+        flex-direction: column;
+        width: 100%;
+    }
+}

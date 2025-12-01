@@ -1,0 +1,19 @@
+<div class="promo-container">
+    <h2>{{ 'admin.promo.title' | translate }}</h2>
+
+    <form [formGroup]="promoForm" (ngSubmit)="sendEmail()">
+        <div class="form-group">
+            <label for="subject">{{ 'admin.promo.subject' | translate }}</label>
+            <input id="subject" type="text" formControlName="subject"
+                placeholder="{{ 'admin.promo.subjectPlaceholder' | translate }}">
+        </div>
+
+        <div class="form-group">
+            <label for="body">{{ 'admin.promo.body' | translate }}</label>
+            <textarea id="body" formControlName="body" rows="6"
+                placeholder="{{ 'admin.promo.bodyPlaceholder' | translate }}"></textarea>
+        </div>
+
+        <button type="submit" class="btn-send">{{ 'admin.promo.send' | translate }}</button>
+    </form>
+</div>

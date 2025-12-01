@@ -1,0 +1,110 @@
+<header class="header">
+  <nav class="navbar">
+    <div class="icon">
+      <div class="logo">
+        <img [routerLink]="['/main']" src="/301456084_598900125006363_7456772329223368727_n-removebg-preview.png"
+          alt="">
+        <a [routerLink]="['/main']" class="nav-logo">{{ 'header.RiverSide Food Lab' | translate }}</a>
+      </div>
+    </div>
+
+    <ul class="nav-menu" [ngClass]="{ 'active': menuOpen }">
+      <li class="nav-item">
+        <i class="fa-solid fa-house fa-md"></i>
+        <a routerLink="/main" (click)="closeMenu()" class="nav-link">{{ 'header.Home' | translate }}</a>
+      </li>
+      <li class="nav-item">
+        <div class="fa-icon">
+          <i class="fa-solid fa-cutlery fa-md"></i>
+        </div>
+        <a routerLink="/home" (click)="closeMenu()" class="nav-link">{{ 'header.Food Categories' | translate }}</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn() && authService.getUserRole() === 'Admin'" class="nav-item">
+        <div class="fa-icon">
+          <i class="fa-solid fa-user-shield fa-md"></i>
+        </div>
+        <a routerLink="/admin" (click)="closeMenu()" class="nav-link">{{ 'header.Admin page' | translate }}</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn() && authService.getUserRole() !== 'Admin'" class="nav-item">
+        <div class="fa-icon">
+          <i class="fa-solid fa-cart-shopping fa-md"></i>
+        </div>
+        <a routerLink="/cart" (click)="closeMenu()" (click)="goToCart()" class="nav-link">
+          {{ 'header.Cart' | translate }}
+        </a>
+      </li>
+
+      <li *ngIf="!authService.isLoggedIn()" class="nav-item">
+        <div class="fa-icon">
+          <i class="fa-solid fa-right-to-bracket fa-md"></i>
+        </div>
+        <a routerLink="/login" (click)="closeMenu()" class="nav-link">{{ 'header.login' | translate }}</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn()" class="nav-item user-dropdown">
+        <div class="nav-link user-trigger" (click)="toggleUserMenu()" #menuTrigger>
+          👤 {{ username }}
+          <i class="fa-solid fa-caret-down"></i>
+        </div>
+        <ul class="dropdown-menu" *ngIf="userMenuOpen">
+          <li *ngIf="authService.getUserRole() !== 'Admin'"><a routerLink="/orders" (click)="closeUserMenu()">{{ 'header.orders' | translate }}</a></li>
+          <li><a routerLink="/profile" (click)="closeUserMenu()">{{ 'header.profile' | translate }}</a></li>
+          <li><a routerLink="/change-password" (click)="closeUserMenu()">{{ 'header.changePassword' | translate }}</a>
+          </li>
+          <li><a (click)="logout()" (click)="closeUserMenu()">{{ 'header.logout' | translate }}</a></li>
+        </ul>
+      </li>
+      <li *ngIf="!authService.isLoggedIn()" class="nav-item">
+        <div class="fa-icon">
+          <i class="fa-solid fa-user fa-md"></i>
+        </div>
+        <a routerLink="/signup" (click)="closeMenu()" class="nav-link">{{ 'header.signup' | translate }}</a>
+      </li>
+
+      <li class="nav-item">
+        <div class="fa-icon">
+          <i class="fa-regular fa-address-card"></i>
+        </div>
+        <a routerLink="/contact" (click)="closeMenu()" class="nav-link">{{ 'header.Contact' | translate }}</a>
+      </li>
+
+      <li class="nav-item">
+        <div class="fa-icon">
+          <i class="fa-solid fa-question circle-question"></i>
+        </div>
+        <a routerLink="/faq" (click)="closeMenu()" class="nav-link">{{ 'header.Faq' | translate }}</a>
+      </li>
+    </ul>
+
+    <div class="hamburger" (click)="toggleMenu()" [ngClass]="{ 'active': menuOpen }">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </nav>
+
+  <div class="theme-lang">
+    <div class="toggler">
+      <input (click)="toggleTheme()" id="toggler-1" name="toggler-1" type="checkbox" value="1">
+      <label for="toggler-1" class="lab">
+        <svg class="toggler-on" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+          <polyline class="path check" points="100.2,40.2 51.5,88.8 29.8,67.5"></polyline>
+        </svg>
+        <svg class="toggler-off" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+          <line class="path line" x1="34.4" y1="34.4" x2="95.8" y2="95.8"></line>
+          <line class="path line" x1="95.8" y1="34.4" x2="34.4" y2="95.8"></line>
+        </svg>
+      </label>
+      <div class="toggler-title">{{ 'header.Dark Mode' | translate }}</div>
+    </div>
+
+    <div class="lang">
+      <div id="firstFilter" class="filter-switch">
+        <input checked id="option1" name="options" type="radio" />
+        <label class="option" for="option1" (click)="switchLanguage('en')">Eng</label>
+        <input id="option2" name="options" type="radio" />
+        <label class="option" for="option2" (click)="switchLanguage('ka')">Geo</label>
+        <span class="background"></span>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,27 @@
+<div class="cart-item">
+    <div class="left">
+        <div class="img-container">
+            <img [src]="cartItem.product.image" alt="Food Image">
+        </div>
+        <h4 class="name">{{ cartItem.product.name }}</h4>
+    </div>
+    <div class="right">
+        <div class="item-details">
+            <div class="detail">
+                <div class="quantity">
+                    <div class="change-btn" (click)="updateQuantity(quantity - 1)">
+                        <span>&#8722;</span>
+                    </div>
+                    <input type="number" name="quantity" id="quantity-inp" [value]="cartItem.quantity"
+                        [(ngModel)]="quantity" (input)="changeQty($event)" (change)="updateQuantity(quantity)">
+                    <div class="change-btn" (click)="updateQuantity(quantity + 1)">
+                        <span>&#43;</span>
+                    </div>
+                </div>
+            </div>
+            <p class="detail price">{{ cartItem.price | currency: "₾"}}</p>
+            <p class="detail total-price">{{ cartItem.price * cartItem.quantity | currency: "₾" }}</p>
+        </div>
+        <div class="delete-btn" (click)="deleteProduct(cartItem)"></div>
+    </div>
+</div>

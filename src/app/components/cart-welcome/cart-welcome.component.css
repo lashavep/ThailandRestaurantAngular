@@ -1,0 +1,16 @@
+/* .cart-hero {
+    background-image: url("../../assets/images/welcome/3.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+h3 {
+    font-size: 42px;
+    color: white;
+    
+}

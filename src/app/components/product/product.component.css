@@ -1,0 +1,250 @@
+.card {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 3px rgba(180, 147, 54, 0.774);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card .food-img {
+    padding: 0 10px 0;
+    background-color: #c2712694;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Playwrite GB S", cursive;
+}
+
+.card .food-img img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.spiciness {
+    font-family: "Playwrite GB S", cursive;
+}
+
+.card .card-body {
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: rgba(150, 119, 61, 0.329);
+}
+
+.card .card-body .food-name {
+    font-size: 18px;
+    font-family: "Playwrite GB S", cursive, serif;
+}
+
+.card .card-body p {
+    font-size: 15px;
+}
+
+.card .card-body .extra-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.card .card-body .extra-choices .extra-choice {
+    gap: 5px;
+    font-family: "Playwrite GB S", cursive;
+}
+
+.card .card-body .ordering-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.card .card-body .ordering-details .price {
+    font-size: 14px;
+    font-family: "Playwrite GB S", cursive;
+    font-weight: bold;
+    padding-top: 7px;
+}
+
+.card .card-body .ordering-details .add-to-cart {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: chocolate;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: normal;
+    word-break: break-word;
+    text-align: center;
+    max-width: 160px;
+}
+
+.card .card-body .ordering-details .add-to-cart:hover {
+    background-color: rgb(131, 65, 17);
+    transform: scale(1.05);
+}
+
+.card .card-body .ordering-details .add-to-cart:active {
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.6);
+    transform: scale(0.98);
+}
+
+.card .loading,
+.card .card-body .ordering-details .add-to-cart.loading {
+    background-color: #bbb;
+    border-radius: 8px;
+    color: #eee;
+    cursor: not-allowed;
+}
+
+.card .food-image.loading {
+    width: 100%;
+    height: 200px;
+    border-radius: 0;
+}
+
+@media screen and (max-width: 1150px) {
+    .card .card-body {
+        padding: 8px 20px 20px;
+        gap: 12px;
+    }
+
+    .card .card-body .ordering-details {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .card .card-body {
+        padding: 5px 15px 20px;
+        gap: 8px;
+    }
+
+    .card .card-body .food-name {
+        font-size: 17px;
+    }
+
+    .card .card-body p {
+        font-size: 12px;
+    }
+
+    .card .card-body .extra-choices {
+        gap: 5px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card .card-body .ordering-details .price {
+        font-size: 19px;
+    }
+
+    .card .card-body .ordering-details .add-to-cart {
+        font-size: 12px;
+        max-width: 140px;
+        padding: 6px 8px;
+    }
+}
+
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.685);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+    animation: fadeIn 0.3s ease;
+}
+
+.popup-content {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 25px;
+    border-radius: 10px;
+    width: 350px;
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: left;
+    color: #f1f1f1;
+    font-family: "Playwrite GB S", cursive;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    animation: scaleIn 0.3s ease;
+}
+
+.popup-content h4 {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffd27f;
+}
+
+.popup-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-content ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 15px;
+}
+
+.popup-content svg {
+    cursor: pointer;
+    margin-top: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: color 0.3s ease;
+}
+
+.popup-content svg:hover {
+    color: red;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,49 @@
+<div class="body">
+  <div class="container">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div class="head">
+        <span>{{ 'signup.span' | translate }}</span>
+        <p>{{ 'signup.p' | translate }}</p>
+      </div>
+
+      <div class="inputs">
+        <input type="text" formControlName="firstName" [placeholder]="'signup.firstName' | translate">
+        <input type="text" formControlName="lastName" [placeholder]="'signup.lastName' | translate">
+        <input type="number" formControlName="age" [placeholder]="'signup.age' | translate" min="18">
+        <input type="email" formControlName="email" [placeholder]="'signup.email' | translate">
+        <input type="password" formControlName="password" [placeholder]="'signup.password' | translate">
+        <input type="password" formControlName="confirmPassword" [placeholder]="'signup.confirmPassword' | translate">
+        <input type="text" formControlName="address" [placeholder]="'signup.address' | translate"
+          (focus)="showAddressWarning = true" (blur)="showAddressWarning = false">
+        <div *ngIf="showAddressWarning" class="warning">{{ 'signup.addressWarning' | translate }}</div>
+        <input type="text" formControlName="phone" [placeholder]="'signup.phone' | translate">
+        <input type="text" formControlName="zipcode" [placeholder]="'signup.zipcode' | translate">
+
+
+        <select id="gender" formControlName="gender">
+          <option value="" disabled>{{ 'signup.genderPlaceholder' | translate }}</option>
+          <option value="0">{{ 'signup.genderMale' | translate }}</option>
+          <option value="1">{{ 'signup.genderFemale' | translate }}</option>
+          <option value="2">{{ 'signup.genderOther' | translate }}</option>
+        </select>
+
+
+
+        <label>
+          <input type="checkbox" formControlName="isSubscribedToPromo">
+          {{ 'signup.subscribePromo' | translate }}
+        </label>
+      </div>
+
+      <button type="submit" [disabled]="signupForm.invalid">
+        {{ 'signup.button' | translate }}
+      </button>
+    </form>
+
+    <div class="ff">
+      <p>{{ 'signup.divp' | translate }}
+        <a routerLink="/login">{{ 'signup.form-footer' | translate }}</a>
+      </p>
+    </div>
+  </div>
+</div>

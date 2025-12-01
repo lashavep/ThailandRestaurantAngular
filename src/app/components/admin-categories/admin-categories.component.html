@@ -1,0 +1,30 @@
+<div class="category-management">
+  <h2>{{ 'admin.table.categories.title' | translate }}</h2>
+
+  <div class="add-category">
+    <input [(ngModel)]="newCategoryName" [placeholder]="'admin.table.categories.newCategoryPlaceholder' | translate" />
+    <button (click)="addCategory()">{{ 'admin.table.categories.addButton' | translate }}</button>
+  </div>
+
+
+  <table class="category-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>{{ 'admin.table.categories.name' | translate }}</th>
+        <th>{{ 'admin.table.categories.actions' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cat of categories">
+        <td>{{ cat.id }}</td>
+        <td>{{ cat.name }}</td>
+        <td>
+          <button class="delete-btn" (click)="deleteCategory(cat.id)">
+            {{ 'admin.table.categories.deleteButton' | translate }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

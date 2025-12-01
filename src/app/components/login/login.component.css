@@ -1,0 +1,111 @@
+.card {
+    padding: 20px 35px;
+    text-align: center;
+    background: #976328;
+    border-radius: 10px;
+    box-shadow: 2px 3px 7px 7px rgba(210, 105, 30, 0.582);
+    max-width: 350px;
+}
+
+.field {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    background-color: #29251f;
+    border-radius: 4px;
+    padding: 0.5em 1em;
+}
+
+.field .input-icon {
+    height: 30px;
+    width: 3px;
+    fill: #ffeba7;
+}
+
+.field .input-field {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #d3d3d3;
+}
+
+.field .input-field:focus::placeholder {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.title {
+    margin-bottom: 1rem;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #f5f5f5;
+    font-family: "Playwrite GB S", cursive;
+}
+
+.btn {
+    margin: 1rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    background-color: #ffeba7;
+    color: #5e6681;
+    box-shadow: 0 8px 24px 0 rgb(255, 235, 167, 0.2);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    font-family: "Playwrite GB S", cursive;
+}
+
+.btn:hover {
+    background-color: #5e6681;
+    color: #ffeba7;
+    box-shadow: 0 8px 24px 0 rgb(16, 39, 112, 0.2);
+}
+
+.login-footer {
+    margin-top: 25px;
+    border-top: 1.5px solid black;
+}
+
+
+.btn-link {
+    margin: 10px;
+    color: #f5f5f5;
+    display: block;
+    font-size: 1em;
+    transition: color 0.3s ease-out;
+    font-family: "Playwrite GB S", cursive;
+    text-decoration: none;
+}
+
+.btn-forgot {
+    margin: 10px;
+    color: #f5f5f5;
+    display: block;
+    font-size: 1em;
+    cursor: pointer;
+    transition: color 0.3s ease-out;
+    font-family: "Playwrite GB S", cursive;
+}
+
+.btn-forgot:hover {
+    color: #ffeba7;
+}
+
+.btn-link:hover {
+    color: #ffeba7;
+}
+
+.main_card { 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+}

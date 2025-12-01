@@ -1,0 +1,150 @@
+.cart-page {
+    min-height: 100vh;
+}
+
+.logout {
+    display: flex;
+    justify-content: flex-end;
+    padding: 40px 20px;
+}
+
+.logout-btn {
+    display: flex;
+    justify-content: end;
+    padding: 8px 20px;
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-family: "Playwrite GB S", cursive;
+}
+
+.logout-btn:hover{
+    background-color: darkred;
+}
+
+.cart-page .cart-body {
+    padding: 60px 20px;
+    max-width: 1180px;
+    margin: auto;
+    text-align: center;
+}
+
+.cart-page .cart-body .title {
+    font-size: 28px !important;
+    margin-bottom: 40px;
+    font-family: "Playwrite GB S", cursive;
+    color: chocolate;
+}
+
+.left h4 {
+    font-family: "Playwrite GB S", cursive;
+    font-size: large !important;
+}
+
+.cart-items {
+    font-size: large !important;
+}
+
+
+.cart-page .cart-body .cart-items-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px 60px 20px 250px;
+    background-color: #eeeeee75;
+    border-bottom: 3px solid chocolate;
+    color: chocolate;
+}
+
+.cart-page .cart-body .cart-items-header .right {
+    width: 400px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.cart-page .cart-body .cart-items-header .right .small-header {
+    width: calc(100% / 3);
+    font-family: "Playwrite GB S", cursive;
+    font-size: large !important;
+}
+
+.cart-page .cart-body .cart-items-header .right .qty-header::before {
+    content: "(1-99)";
+    display: block;
+    font-size: 11.5px;
+    font-weight: 400;
+}
+
+.cart-page .cart-body .ordering-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-end;
+    padding: 40px 20px;
+    font-family: "Playwrite GB S", cursive;
+
+}
+
+.cart-page .cart-body .ordering-details .total-price {
+    font-size: 22px;
+    font-family: "Playwrite GB S", cursive;
+
+}
+
+.cart-page .cart-body .ordering-details .order-btn {
+    padding: 8px 20px;
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-family: "Playwrite GB S", cursive;
+
+}
+
+.cart-page .cart-body .ordering-details .order-btn:hover {
+    background-color: darkred;
+}
+
+@media screen and (max-width: 924px) {
+    .cart-page .cart-body .cart-items-header .right {
+        width: 320px;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .cart-page .cart-body .cart-items-header {
+        padding: 20px 60px;
+    }
+
+    .cart-page .cart-body .cart-items-header .right {
+        width: 280px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .cart-page .cart-body {
+        padding: 50px 0px;
+    }
+
+    .cart-page .cart-body .cart-items-header {
+        padding: 15px 35px;
+        margin: 20px;
+    }
+
+    .cart-page .cart-body .cart-items-header .right {
+        width: 240px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .cart-page .cart-body .cart-items-header .right {
+        width: 200px;
+    }
+}

@@ -1,0 +1,59 @@
+<div class="add-product-form">
+  <h2>{{ 'admin.add.title' | translate }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div>
+      <label>{{ 'admin.table.name' | translate }}</label>
+      <input formControlName="name" />
+    </div>
+
+    <div>
+      <label>{{ 'admin.table.price' | translate }}</label>
+      <input type="number" formControlName="price" />
+    </div>
+
+    <div>
+      <label>{{ 'admin.table.spiciness' | translate }}</label>
+      <select formControlName="spiciness">
+        <option [value]="0">{{ 'admin.table.spiceLevel.notSpicy' | translate }}</option>
+        <option [value]="1">{{ 'admin.table.spiceLevel.mild' | translate }}</option>
+        <option [value]="2">{{ 'admin.table.spiceLevel.medium' | translate }}</option>
+        <option [value]="3">{{ 'admin.table.spiceLevel.hot' | translate }}</option>
+        <option [value]="4">{{ 'admin.table.spiceLevel.extra' | translate }}</option>
+      </select>
+    </div>
+    <div>
+      <label>{{ 'admin.table.category' | translate }}</label>
+      <select formControlName="categoryName">
+        <option *ngFor="let cat of categories" [value]="cat.name">
+          {{ 'categories.' + cat.name | translate }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label>{{ 'admin.table.image' | translate }}</label>
+      <input formControlName="image" />
+    </div>
+
+    <div>
+      <label>{{ 'admin.table.ingredients' | translate }}</label>
+      <input formControlName="ingredients" placeholder="Chicken, Mint, Onion..." rows="3">
+    </div>
+
+    <div>
+      <label>
+        <input type="checkbox" formControlName="vegeterian" />
+        {{ 'admin.table.vegetarian' | translate }}
+      </label>
+    </div>
+
+    <div>
+      <label>
+        <input type="checkbox" formControlName="nuts" />
+        {{ 'admin.table.nuts' | translate }}
+      </label>
+    </div>
+
+    <button type="submit">{{ 'admin.add.submit' | translate }}</button>
+  </form>
+</div>

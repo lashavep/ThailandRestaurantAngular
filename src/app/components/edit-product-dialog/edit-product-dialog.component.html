@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>Edit Product</h2>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input matInput type="number" formControlName="price">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Image URL</mat-label>
+      <input matInput formControlName="image">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Spiciness</mat-label>
+      <mat-select formControlName="spiciness">
+        <mat-option [value]="0">Not Spicy</mat-option>
+        <mat-option [value]="1">Mild</mat-option>
+        <mat-option [value]="2">Medium</mat-option>
+        <mat-option [value]="3">Hot</mat-option>
+        <mat-option [value]="4">Extra Hot</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Vegetarian</mat-label>
+      <mat-select formControlName="vegeterian">
+        <mat-option [value]="true">Vegetarian</mat-option>
+        <mat-option [value]="false">Not Vegetarian</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nuts</mat-label>
+      <mat-select formControlName="nuts">
+        <mat-option [value]="true">Contains Nuts</mat-option>
+        <mat-option [value]="false">No Nuts</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="categoryName">
+        <mat-option *ngFor="let c of categories" [value]="c.name">{{ c.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Ingredients</mat-label>
+      <textarea matInput formControlName="ingredients"></textarea>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button color="primary" (click)="save()">Save</button>
+</div>

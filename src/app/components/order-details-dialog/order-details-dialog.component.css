@@ -1,0 +1,178 @@
+:host {
+  display: block;
+  padding: 20px;
+  max-width: 600px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  font-family: "Segoe UI", Roboto, sans-serif;
+  color: #333;
+}
+
+
+h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+
+p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+}
+
+strong {
+  color: #34495e;
+}
+
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0;
+}
+
+ul li {
+  background: #f9f9f9;
+  margin-bottom: 6px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.dialog-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dialog-actions button:first-child {
+  background: #27ae60;
+  color: #fff;
+}
+
+.dialog-actions button:first-child:hover {
+  background: #219150;
+}
+
+.dialog-actions button:nth-child(2) {
+  background: #e53935;
+  color: #fff;
+}
+
+.dialog-actions button:nth-child(2):hover {
+  background: #c62828;
+}
+
+.dialog-actions button:last-child {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.dialog-actions button:last-child:hover {
+  background: #d5d5d5;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  h2 {
+    color: #f0f0f0;
+    border-bottom: 2px solid #333;
+  }
+
+  strong {
+    color: #f0f0f0;
+  }
+
+  ul li {
+    background: #2a2a2a;
+    color: #e0e0e0;
+  }
+
+  .dialog-actions button:first-child {
+    background: #27ae60;
+    color: #fff;
+  }
+
+  .dialog-actions button:first-child:hover {
+    background: #219150;
+  }
+
+  .dialog-actions button:nth-child(2) {
+    background: #e53935;
+    color: #fff;
+  }
+
+  .dialog-actions button:nth-child(2):hover {
+    background: #c62828;
+  }
+
+  .dialog-actions button:last-child {
+    background: #444;
+    color: #e0e0e0;
+  }
+
+  .dialog-actions button:last-child:hover {
+    background: #555;
+  }
+}
+
+@media (max-width: 720px) {
+  :host {
+    padding: 15px;
+    max-width: 100%;  
+  }
+
+  h2 {
+    font-size: 1.2rem; 
+    padding-bottom: 8px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    margin: 6px 0;
+  }
+
+  ul li {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .dialog-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .dialog-actions button {
+    width: 100%;          
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+}

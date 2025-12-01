@@ -1,0 +1,48 @@
+<h2>{{ 'admin.sidebar.products' | translate }}</h2>
+
+<div *ngIf="loading">{{ 'admin.loading' | translate }}</div>
+
+<table *ngIf="!loading && products.length > 0" class="product-table">
+  <thead>
+    <tr>
+      <th>{{ 'admin.table.name' | translate }}</th>
+      <th>{{ 'admin.table.price' | translate }}</th>
+      <th>{{ 'admin.table.spiciness' | translate }}</th>
+      <th>{{ 'admin.table.vegetarian' | translate }}</th>
+      <th>{{ 'admin.table.nuts' | translate }}</th>
+      <th>{{ 'admin.table.category' | translate }}</th>
+      <th>{{ 'admin.table.image' | translate }}</th>
+      <th>{{ 'admin.table.actions' | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products | paginate: { itemsPerPage: pageSize, currentPage: page }">
+      <td class="name">{{ p.name }}</td>
+      <td>{{ p.price | currency:'GEL' }}</td>
+      <td>{{ getSpicinessLabel(p.spiciness) }}</td>
+      <td>{{ p.vegeterian ? '✔️' : '❌' }}</td>
+      <td>{{ p.nuts ? '✔️' : '❌' }}</td>
+      <td>{{ p.categoryName }}</td>
+      <td><img [src]="p.image" alt="Product Image" width="50" /></td>
+      <td>
+        <div class="edit"> 
+           <button class="btn btn-sm btn-primary" (click)="editProduct(p)">
+          {{ 'admin.table.edit' | translate }}
+        </button>
+        <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">
+          {{ 'admin.table.delete' | translate }}
+        </button>
+        </div>
+       
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<pagination-controls *ngIf="products.length > pageSize" (pageChange)="page = $event" [autoHide]="true"
+  [responsive]="true" class="pagination">
+</pagination-controls>
+
+<div *ngIf="!loading && products.length === 0">
+  {{ 'admin.empty' | translate }}
+</div>

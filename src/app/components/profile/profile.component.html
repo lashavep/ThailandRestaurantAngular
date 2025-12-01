@@ -1,0 +1,33 @@
+<div class="profile-wrapper">
+  <h2>{{ 'profile.Title' | translate }}</h2>
+
+  <form class="profile-form" (ngSubmit)="updateProfile()">
+    <div>
+      <label>{{ 'profile.FirstName' | translate }}</label>
+      <input [(ngModel)]="profile.firstName" name="firstName" />
+    </div>
+    <div>
+      <label>{{ 'profile.LastName' | translate }}</label>
+      <input [(ngModel)]="profile.lastName" name="lastName" />
+    </div>
+    <div>
+      <label>{{ 'profile.Phone' | translate }}</label>
+      <input [(ngModel)]="profile.phone" name="phone" />
+    </div>
+    <div>
+      <label>{{ 'profile.Zipcode' | translate }}</label>
+      <input [(ngModel)]="profile.zipcode" name="zipcode" />
+    </div>
+    <div>
+      <label>{{ 'profile.Address' | translate }}</label>
+      <input [(ngModel)]="profile.address" name="address" />
+    </div>
+    <div>
+      <label>{{ 'profile.Email' | translate }}</label>
+      <input [(ngModel)]="profile.email" name="email" />
+    </div>
+    <button class="update-button" type="submit">
+      {{ 'profile.UpdateButton' | translate }}
+    </button>
+  </form>
+</div>

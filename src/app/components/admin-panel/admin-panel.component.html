@@ -1,0 +1,27 @@
+<div class="admin-layout">
+
+  <aside class="sidebar">
+    <h3>{{ 'admin.sidebar.title' | translate }}</h3>
+    <nav>
+      <a routerLink="users" routerLinkActive="active">{{ 'admin.sidebar.users' | translate }}</a>
+      <a routerLink="promote-user" routerLinkActive="active">{{ 'admin.sidebar.promote' | translate }}</a>
+      <a routerLink="categories" routerLinkActive="active">{{ 'admin.sidebar.categories' | translate }}</a>
+      <a routerLink="products" routerLinkActive="active">{{ 'admin.sidebar.products' | translate }}</a>
+      <a routerLink="add-product" routerLinkActive="active">{{ 'admin.sidebar.addproduct' | translate }}</a>
+      <a routerLink="promo-email" routerLinkActive="active">{{ 'admin.sidebar.promo' | translate }}</a>
+      <a routerLink="manage-orders" routerLinkActive="active" class="orders-link">
+  {{ 'admin.sidebar.orders' | translate }}
+  <span *ngIf="(orderService.pendingCount$ | async) as count">
+    <span *ngIf="count > 0" class="badge">{{ count }}</span>
+  </span>
+</a>
+
+
+    </nav>
+  </aside>
+
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

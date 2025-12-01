@@ -1,0 +1,39 @@
+<div class="main_card">
+  <div class="card">
+    <h4 class="title">{{ 'login.h4' | translate }}</h4>
+    <form (submit)="onLogin()">
+      <div class="field">
+        <svg class="input-icon" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"></svg>
+        <input
+          autocomplete="off"
+          id="logemail"
+          [placeholder]="'login.logemail' | translate"
+          class="input-field"
+          name="logemail"
+          type="email"
+          [(ngModel)]="email"
+          required
+        />
+      </div>
+      <div class="field">
+        <svg class="input-icon" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"></svg>
+        <input
+          autocomplete="off"
+          id="logpass"
+          [placeholder]="'login.logpass' | translate"
+          class="input-field"
+          name="logpass"
+          type="password"
+          [(ngModel)]="password"
+          required
+        />
+      </div>
+      <button class="btn" type="submit">{{ 'login.btn' | translate }}</button>
+
+      <div class="login-footer">
+        <a routerLink="/signup" class="btn-link">{{ 'login.btn-link' | translate }}</a>
+        <a (click)="onForgotPassword()" class="btn-forgot">{{ 'login.forgot' | translate }}</a>
+      </div>
+    </form>
+  </div>
+</div>

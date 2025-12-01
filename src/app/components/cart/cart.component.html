@@ -1,0 +1,29 @@
+<main class="cart-page">
+    <section class="hero">
+        <app-cart-welcome></app-cart-welcome>
+    </section>
+    <section class="cart-body">
+        <!-- <div class="logout">
+            <button class="logout-btn" (click)="logout()">{{'cart.logout'|translate}}</button>  
+        </div> -->
+        <h4 class="title">{{'cart.Your Cart'|translate}}</h4>
+        <div class="cart-items-header">
+            <div class="left">
+                <h4>{{'cart.Product'|translate}}</h4>
+            </div>
+            <div class="right">
+                <h4 class="qty-header small-header">{{'cart.Qty'|translate}}</h4>
+                <h4 class="small-header">{{'cart.Price'|translate}}</h4>
+                <h4 class="small-header">{{'cart.Total'|translate}}</h4>
+            </div>
+        </div>
+        <div class="cart-items">
+            <app-cart-item-list></app-cart-item-list>
+        </div>
+        <div class="ordering-details">
+            <h5 class="total-price">{{'cart.Total Price'|translate}} {{ totalPrice | currency: "₾" }}</h5>
+            <button class="order-btn" (click)="proceedToPayment()">{{'cart.Order Now'|translate}}</button>
+            
+        </div>
+    </section>
+</main>

@@ -1,0 +1,22 @@
+<h2>Order Details</h2>
+
+<p><strong>User:</strong> {{ orderDetails?.user?.firstName }}</p>
+<p><strong>Email:</strong> {{ orderDetails?.user?.email }}</p>
+
+<p><strong>Products:</strong></p>
+<ul>
+  <li *ngFor="let item of orderDetails?.products">
+    {{ item.name }} (x{{ item.quantity }}) — {{ item.price | currency: "₾" }}
+  </li>
+</ul>
+<p><strong>Total:</strong> {{ orderDetails?.total | currency: "₾" }}</p>
+<p><strong>Address:</strong> {{ orderDetails?.address }}</p>
+<p><strong>Date:</strong> {{ orderDetails?.date | date:'short' }}</p>
+<p><strong>Status:</strong> {{ orderDetails?.status }}</p>
+
+<div class="dialog-actions">
+  <button *ngIf="orderDetails?.status === 'Pending'" (click)="acceptOrder()">Accept</button>
+  <button *ngIf="orderDetails?.status === 'Pending'" (click)="rejectOrder()">Reject</button>
+  <button (click)="close()">Close</button>
+</div>
+

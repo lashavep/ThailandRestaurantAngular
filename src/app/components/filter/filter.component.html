@@ -1,0 +1,47 @@
+<div class="filter-toggle">
+    <input type="checkbox" id="filter-toggle-checkbox" [(ngModel)]="isOpen">
+    <label for="filter-toggle-checkbox">
+        <div class="icon-container">
+            <i class="fa-solid fa-filter fa-md"></i>
+        </div>
+        <span>{{ 'filter.ToggleLabel' | translate }}</span>
+    </label>
+</div>
+
+<div class="filter-container" (click)="closeFilter()">
+    <div class="filter" (click)="$event.stopPropagation()">
+        <div class="filter-header">
+            <p class="filter-title">{{ 'filter.HeaderTitleSpaced' | translate }}</p>
+            <div class="close-btn" (click)="closeFilter()">
+                <i class="fa-solid fa-xmark fa-lg"></i>
+            </div>
+        </div>
+
+        <form (ngSubmit)="filterProducts()" #filterForm="ngForm">
+            <div class="input-container range-container">
+                <div class="spiciness-label">
+                    <p>{{ 'filter.Spiciness' | translate }}:</p>
+                    <p class="spiciness-level">{{ 'spicinessLevels.' + filterData.spiciness | translate }}</p>
+                </div>
+                <input type="range" min="0" max="4" id="spiciness" name="spiciness" [(ngModel)]="filterData.spiciness">
+            </div>
+
+            <div class="input-container checkbox-container">
+                <input type="checkbox" id="nuts" name="nuts" [(ngModel)]="filterData.nuts">
+                <label for="nuts">{{ 'filter.NoNuts' | translate }}</label>
+            </div>
+
+            <div class="input-container checkbox-container">
+                <input type="checkbox" id="vegetarian" name="vegetarian" [(ngModel)]="filterData.vegetarian">
+                <label for="vegetarian">{{ 'filter.Vegetarian' | translate }}</label>
+            </div>
+
+            <div class="buttons">
+                <button type="submit" class="apply-btn form-btn">{{ 'filter.Apply' | translate }}</button>
+                <button type="button" class="reset-btn form-btn" (click)="resetFilter()">
+                    {{ 'filter.Reset' | translate }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="cart-list">
+    <div *ngFor="let item of pagedItems">
+        <app-cart-item [cartItem]="item" [quantity]="item.quantity" (delete)="deleteItem($event)">
+        </app-cart-item>
+    </div>
+</div>
+
+<div class="pagination" *ngIf="cartItems.length > pageSize">
+    <button (click)="changePage(page - 1)" [disabled]="page === 1">
+        {{ 'pagination.Prev' | translate }}
+    </button>
+
+    <span>
+        {{ 'pagination.Page' | translate }} {{ page }}
+        {{ 'pagination.Of' | translate }} {{ totalPages }}
+    </span>
+
+    <button (click)="changePage(page + 1)" [disabled]="page === totalPages">
+        {{ 'pagination.Next' | translate }}
+    </button>
+</div>

@@ -1,0 +1,26 @@
+<div class="categories-toggle">
+    <input type="checkbox" id="categories-toggle-checkbox" [(ngModel)]="isOpen">
+    <label for="categories-toggle-checkbox">
+        <div class="icon-container">
+            <i class="fa-solid fa-list fa-xl"></i>
+        </div>
+        <p>{{ 'categories.Title' | translate }}</p>
+    </label>
+</div>
+
+<div class="container" (click)="closeCategories()">
+    <div class="categories" (click)="$event.stopPropagation()">
+        <div class="categories-header">
+            <div class="close-btn" (click)="closeCategories()">
+                <i class="fa-solid fa-xmark fa-lg"></i>
+            </div>
+        </div>
+        <div class="category" (click)="selectCategory(0)" [ngClass]="{'selected' : selectedId === 0}">
+            {{ 'categories.All' | translate }}
+        </div>
+        <div class="category" *ngFor="let category of categories" (click)="selectCategory(category.id)"
+            [ngClass]="{'selected' : category.id === selectedId}">
+            {{ 'categories.' + category.name | translate }}
+        </div>
+    </div>
+</div>

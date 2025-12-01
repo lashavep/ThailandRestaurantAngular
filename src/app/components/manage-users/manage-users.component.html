@@ -1,0 +1,30 @@
+<h2>{{ 'admin.users.title' | translate }}</h2>
+
+<div *ngIf="loading">{{ 'admin.loading' | translate }}</div>
+
+<table *ngIf="!loading && users.length > 0" class="user-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>{{ 'admin.columns.name' | translate }}</th>
+      <th>{{ 'admin.columns.email' | translate }}</th>
+      <th>{{ 'admin.columns.phone' | translate }}</th>
+      <th>{{ 'admin.columns.actions' | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of users">
+      <td>{{ u.id }}</td>
+      <td>{{ u.firstName }} {{ u.lastName }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.phone }}</td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="deleteUser(u.id)">
+          {{ 'admin.columns.delete' | translate }}
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && users.length === 0">{{ 'admin.empty' | translate }}</div>

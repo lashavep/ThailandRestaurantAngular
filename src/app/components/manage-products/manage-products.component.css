@@ -1,0 +1,173 @@
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #333;
+  text-align: center;
+  padding-bottom: 4rem;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.product-table th,
+.product-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.product-table th {
+  font-weight: 600;
+  color: #444;
+}
+td.name {
+  text-align: left !important;  
+  padding-left: 8px; 
+}
+.product-table td img {
+  width: 60px;          
+  height: 60px;        
+  object-fit: cover;    
+  border-radius: 50%;  
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit { 
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap:4px;
+
+}
+.btn { 
+padding-left: 20px;
+}
+.product-table td button {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #d9534f;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  gap: 4px;
+}
+
+.product-table td button:hover {
+  background-color: #c9302c;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination ::ng-deep .ngx-pagination {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pagination ::ng-deep .ngx-pagination li {
+  list-style: none;
+}
+
+.pagination ::ng-deep .ngx-pagination a,
+.pagination ::ng-deep .ngx-pagination span {
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.pagination ::ng-deep .ngx-pagination .current {
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+}
+
+.pagination ::ng-deep .ngx-pagination a:hover {
+  background-color: #ddd;
+}
+
+div[ngIf] {
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 720px) {
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 2rem;  
+  }
+
+  .product-table {
+    font-size: 14px;
+    display: block;      
+    overflow-x: auto;       
+    white-space: nowrap;    
+  }
+
+  .product-table th,
+  .product-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  td.name {
+    padding-left: 6px;
+    font-size: 0.9rem;
+  }
+
+  .product-table td img {
+    width: 45px;          
+    height: 45px;
+  }
+
+  .edit {
+    flex-direction: column; 
+    gap: 6px;
+  }
+
+  .product-table td button {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
+    width: 100%;           
+  }
+
+  .pagination {
+    margin-top: 0.75rem;
+  }
+
+  .pagination ::ng-deep .ngx-pagination {
+    flex-wrap: wrap;        
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .pagination ::ng-deep .ngx-pagination a,
+  .pagination ::ng-deep .ngx-pagination span {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  div[ngIf] {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+}

@@ -1,0 +1,10 @@
+<div class="products">
+  <div class="product" *ngFor="let product of pagedProducts">
+    <app-product 
+      [product]="product" 
+      [buttonText]="basketService.isInBasket(product.id) ? ('product.GoToCart' | translate) : ('product.AddToCart' | translate)"
+      (add)="addToCart(product)" 
+      (goToCart)="goToCart()">
+    </app-product>
+  </div>
+</div>

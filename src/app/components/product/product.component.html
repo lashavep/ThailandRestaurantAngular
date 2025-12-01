@@ -1,0 +1,45 @@
+<div class="card" *ngIf="isLoaded">
+  <div class="food-img">
+    <img [src]="product.image" alt="Food Image" (click)="getSpecificIngredient(product.id)">
+    <p (click)="getSpecificIngredient(product.id)">{{ 'product.ViewIngredients' | translate }}</p>
+  </div>
+  <div class="card-body">
+    <h4 class="food-name">{{ product.name }}</h4>
+    <p class="spiciness">{{ 'product.Spiciness' | translate }}: {{ spicinessLevels[product.spiciness] }}</p>
+    <div class="extra-choices">
+      <div class="extra-choice">
+        <i *ngIf="product.nuts" class="fa-sharp fa-regular fa-circle-check" style="color: #14ec04;"></i>
+        <i *ngIf="!product.nuts" class="fa-sharp fa-regular fa-circle-xmark" style="color: #eb0a0a;"></i>
+        <p>{{ 'product.Nuts' | translate }}</p>
+      </div>
+      <div class="extra-choice">
+        <i *ngIf="product.vegeterian" class="fa-sharp fa-regular fa-circle-check" style="color: #14ec04;"></i>
+        <i *ngIf="!product.vegeterian" class="fa-sharp fa-regular fa-circle-xmark" style="color: #eb0a0a;"></i>
+        <p>{{ 'product.Vegetarian' | translate }}</p>
+      </div>
+    </div>
+    <div class="ordering-details">
+      <h5 class="price">{{ product.price | currency:'₾' }}</h5>
+      <button class="add-to-cart" (click)="onClick()">
+        <i class="fa-solid fa-cart-shopping fa-lg"></i>
+        {{ buttonText === 'Add to Cart' ? ('product.AddToCart' | translate) : ('product.GoToCart' | translate) }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="popup-container" *ngIf="isPopupVisible" (click)="closePopup()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <h4>{{ 'product.Ingredients' | translate }}</h4>
+    <ul>
+      <li *ngFor="let ingredient of selectedIngredient">
+        {{ ingredient.name }} - {{ ingredient.ingredients }}
+      </li>
+    </ul>
+    <svg (click)="closePopup()" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+         class="bi bi-x-circle" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+    </svg>
+  </div>
+</div>

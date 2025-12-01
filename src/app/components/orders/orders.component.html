@@ -1,0 +1,24 @@
+<div class="orders-container">
+  <h2>{{ 'orders.Title' | translate }}</h2>
+
+  <div *ngIf="orders.length > 0; else noOrders">
+    <div *ngFor="let order of pagedOrders" class="order-card">
+      <p><strong>{{ 'orders.Date' | translate }}:</strong> {{ order.date | date:'medium' }}</p>
+      <p><strong>{{ 'orders.Total' | translate }}:</strong> {{ order.total | currency }}</p>
+      <ul>
+        <li *ngFor="let item of order.items">
+          {{ item.name }} — {{ item.quantity }} × {{ item.price | currency }}
+        </li>
+      </ul>
+    </div>
+    <div class="pagination-controls">
+      <button (click)="currentPage = currentPage - 1" [disabled]="currentPage === 1">‹</button>
+      <span>{{ currentPage }} / {{ totalPages }}</span>
+      <button (click)="currentPage = currentPage + 1" [disabled]="currentPage === totalPages">›</button>
+    </div>
+  </div>
+
+  <ng-template #noOrders>
+    <p>{{ 'orders.NoOrders' | translate }}</p>
+  </ng-template>
+</div>

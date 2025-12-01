@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Ingredients</h1>
+<div mat-dialog-content>
+    <ul>
+        <ul>
+            <li *ngFor="let ingredient of data">{{ 'ingredients.' + ingredient.name | translate }} - {{ ingredient.ingredients }}
+            </li>
+        </ul>
+    </ul>
+</div>

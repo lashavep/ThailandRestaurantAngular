@@ -1,0 +1,89 @@
+.add-product-form {
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.397);
+  margin-bottom: 2rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-product-form h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.add-product-form form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.add-product-form label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  display: block;
+  color: #444;
+}
+
+.add-product-form input,
+.add-product-form select {
+  width: 100%;
+  padding: 0.55rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: #fff;
+}
+
+.add-product-form input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.add-product-form button[type="submit"] {
+  grid-column: span 2;
+  padding: 0.75rem 1.5rem;
+  background-color: #d44300;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-product-form button:hover {
+  background-color: #e2470aea;
+}
+
+@media (max-width: 768px) {
+  .add-product-form form {
+    grid-template-columns: 1fr;
+  }
+
+  .add-product-form button[type="submit"] {
+    grid-column: span 1;
+  }
+}
+
+body.dark-mode .add-product-form {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .add-product-form label {
+  color: #ddd;
+}
+
+body.dark-mode .add-product-form input,
+body.dark-mode .add-product-form select {
+  background-color: #2c2c2c;
+  color: #eee;
+  border-color: #555;
+}
+
+body.dark-mode .add-product-form button {
+  background-color: #ff640a;
+}
