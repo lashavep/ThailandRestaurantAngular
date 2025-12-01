@@ -18,7 +18,8 @@ export class ProfileComponent implements OnInit {
     phone: '',
     address: '',
     zipcode: '',
-    email: ''
+    email: '',
+    isSubscribedToPromo: false
   };
 
   constructor(private authService: AuthService) { }
@@ -41,4 +42,8 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
+  logPromo() {
+  console.log('Promo subscription:', this.profile.isSubscribedToPromo);
+}
+
 }

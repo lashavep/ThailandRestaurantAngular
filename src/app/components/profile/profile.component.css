@@ -1,95 +1,139 @@
-.profile-wrapper {
-  max-width: 700px;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: #1e1e1e;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
-  color: #f5f5f5;
-  font-family: 'Segoe UI', sans-serif;
-}
+ .profile-wrapper {
+   max-width: 700px;
+   margin: 50px auto;
+   padding: 30px;
+   background-color: #1e1e1e;
+   border-radius: 16px;
+   box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+   color: #f5f5f5;
+   font-family: 'Segoe UI', sans-serif;
+ }
 
-.profile-wrapper h2 {
-  font-size: 28px;
-  margin-bottom: 25px;
-  color: #ffcc80;
-  text-align: center;
-}
+ .profile-wrapper>*:nth-last-child(1):nth-child(odd) {
+   grid-column: span 2;
+ }
 
-.profile-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
+ .profile-wrapper h2 {
+   font-size: 28px;
+   margin-bottom: 25px;
+   color: #ffcc80;
+   text-align: center;
+ }
 
-.profile-form label {
-  display: block;
-  font-size: 14px;
-  color: #ccc;
-  margin-bottom: 6px;
-}
+ .profile-form {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+ }
 
-.profile-form input {
-  width: 100%;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid #444;
-  background-color: #2a2a2a;
-  color: #f5f5f5;
-  font-size: 15px;
-  transition: border-color 0.3s ease;
-}
+ .profile-form2 {
+   max-width: 1200px;
+   margin: auto;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;
+   padding: 20px;
+ }
 
-.profile-form input:focus {
-  border-color: #ffcc80;
-  outline: none;
-}
+ .profile-form2>* {
+   flex: 1 1 calc(50% - 20px);
+ }
 
-.update-button {
-  grid-column: span 2;
-  background-color: #e53935;
-  color: #fff;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+ .profile-form label {
+   display: block;
+   font-size: 14px;
+   color: #ccc;
+   margin-bottom: 6px;
+ }
 
-.update-button:hover {
-  background-color: #d32f2f;
-}
+ .profile-form input {
+   width: 100%;
+   padding: 10px 14px;
+   border-radius: 8px;
+   border: 1px solid #444;
+   background-color: #2a2a2a;
+   color: #f5f5f5;
+   font-size: 15px;
+   transition: border-color 0.3s ease;
+ }
 
-@media (max-width: 720px) {
-  .profile-wrapper {
-    margin: 20px;
-    padding: 20px;
-    max-width: 100%;   
-  }
+ .profile-form input:focus {
+   border-color: #ffcc80;
+   outline: none;
+ }
 
-  .profile-wrapper h2 {
-    font-size: 22px;    
-    margin-bottom: 20px;
-  }
+ .update-button {
+   grid-column: span 2;
+   background-color: #e53935;
+   color: #fff;
+   padding: 12px;
+   border: none;
+   border-radius: 10px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+ }
 
-  .profile-form {
-    grid-template-columns: 1fr; 
-    gap: 15px;
-  }
+ .update-button:hover {
+   background-color: #d32f2f;
+ }
 
-  .profile-form label {
-    font-size: 13px;
-  }
+ .promo-checkbox {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+ }
 
-  .profile-form input {
-    font-size: 14px;
-    padding: 8px 12px;
-  }
 
-  .update-button {
-    grid-column: span 1;
-    font-size: 15px;
-    padding: 10px;
-  }
-}
+ .promo-checkbox label {
+   gap: 0.8rem;
+   font-size: 1rem;
+   font-weight: 500;
+   cursor: pointer;
+   line-height: 1.6;
+   padding: 0.4rem 0;
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+   white-space: nowrap;
+   background-color: #2a2a2a;
+   border-radius: 8px;
+   border: 1px solid #444;
+   padding: 10px;
+   
+ }
+
+
+ @media (max-width: 720px) {
+   .profile-wrapper {
+     margin: 20px;
+     padding: 20px;
+     max-width: 100%;
+   }
+
+   .profile-wrapper h2 {
+     font-size: 22px;
+     margin-bottom: 20px;
+   }
+
+   .profile-form {
+     grid-template-columns: 1fr;
+     gap: 15px;
+   }
+
+   .profile-form label {
+     font-size: 13px;
+   }
+
+   .profile-form input {
+     font-size: 14px;
+     padding: 8px 12px;
+   }
+
+   .update-button {
+     grid-column: span 1;
+     font-size: 15px;
+     padding: 10px;
+   }
+ }

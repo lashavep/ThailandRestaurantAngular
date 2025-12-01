@@ -253,7 +253,8 @@
                 "Zipcode": "Zipcode",
                 "Address": "Address",
                 "Email": "Email",
-                "UpdateButton": "Update Profile"
+                "UpdateButton": "Update Profile",
+                "PromoSubscription": "receive promotional Emails"
         },
         "changePassword": {
                 "description": "Update your account password securely."

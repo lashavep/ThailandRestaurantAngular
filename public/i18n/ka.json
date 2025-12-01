@@ -253,7 +253,8 @@
       "Zipcode": "საფოსტო კოდი",
       "Address": "მისამართი",
       "Email": "ელ. ფოსტა",
-      "UpdateButton": "პროფილის განახლება"
+      "UpdateButton": "პროფილის განახლება",
+      "PromoSubscription": "მიიღე შეტყობინებები ელექტორნულ ფოსტაზე"
    },
    "password": {
       "ResetTitle": "პაროლის აღდგენა",

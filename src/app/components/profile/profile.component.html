@@ -2,30 +2,41 @@
   <h2>{{ 'profile.Title' | translate }}</h2>
 
   <form class="profile-form" (ngSubmit)="updateProfile()">
-    <div>
-      <label>{{ 'profile.FirstName' | translate }}</label>
-      <input [(ngModel)]="profile.firstName" name="firstName" />
+    <div class="profile-form2">
+      <div>
+        <label>{{ 'profile.FirstName' | translate }}</label>
+        <input [(ngModel)]="profile.firstName" name="firstName" />
+      </div>
+      <div>
+        <label>{{ 'profile.LastName' | translate }}</label>
+        <input [(ngModel)]="profile.lastName" name="lastName" />
+      </div>
+      <div>
+        <label>{{ 'profile.Phone' | translate }}</label>
+        <input [(ngModel)]="profile.phone" name="phone" />
+      </div>
+      <div>
+        <label>{{ 'profile.Zipcode' | translate }}</label>
+        <input [(ngModel)]="profile.zipcode" name="zipcode" />
+      </div>
+      <div>
+        <label>{{ 'profile.Address' | translate }}</label>
+        <input [(ngModel)]="profile.address" name="address" />
+      </div>
+      <div>
+        <label>{{ 'profile.Email' | translate }}</label>
+        <input [(ngModel)]="profile.email" name="email" />
+      </div>
+
+      <div class="promo-checkbox">
+        <label>
+          <input type="checkbox" class="check" [(ngModel)]="profile.isSubscribedToPromo" name="isSubscribedToPromo"
+            (change)="logPromo()" />
+          {{ 'profile.PromoSubscription' | translate }}
+        </label>
+      </div>
     </div>
-    <div>
-      <label>{{ 'profile.LastName' | translate }}</label>
-      <input [(ngModel)]="profile.lastName" name="lastName" />
-    </div>
-    <div>
-      <label>{{ 'profile.Phone' | translate }}</label>
-      <input [(ngModel)]="profile.phone" name="phone" />
-    </div>
-    <div>
-      <label>{{ 'profile.Zipcode' | translate }}</label>
-      <input [(ngModel)]="profile.zipcode" name="zipcode" />
-    </div>
-    <div>
-      <label>{{ 'profile.Address' | translate }}</label>
-      <input [(ngModel)]="profile.address" name="address" />
-    </div>
-    <div>
-      <label>{{ 'profile.Email' | translate }}</label>
-      <input [(ngModel)]="profile.email" name="email" />
-    </div>
+
     <button class="update-button" type="submit">
       {{ 'profile.UpdateButton' | translate }}
     </button>
