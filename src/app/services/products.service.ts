@@ -13,7 +13,7 @@ export class ProductsService {
     constructor(private http: HttpClient, private auth: AuthService) { }
 
     getProducts(): Observable<IProduct[]> {
-        const url = `${this.apiUrl}/Products/GetAll`
+        const url = `${this.apiUrl}/Products/GetAllProduct`
         return this.http.get<IProduct[]>(url);
     }
 }

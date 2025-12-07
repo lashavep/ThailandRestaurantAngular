@@ -269,12 +269,27 @@
       "Submit": "პაროლის შეცვლა",
       "SuccessMessage": "პაროლი წარმატებით შეიცვალა.",
       "ErrorMessage": "დაფიქსირდა შეცდომა. გთხოვთ სცადეთ ხელახლა.",
+      "FailedToSendCode": "კოდის გამოგზავნა ვერ მოხერხდა",
+      "EnterEmailFirst":"შეიყვანეთ ელ-ფოსტა",
       "ConfirmPasswordLabel": "დაადასტურე პაროლი",
       "ConfirmPasswordPlaceholder": "შეიყვანე პაროლი ხელახლა",
       "PasswordMismatchError": "პაროლები არ ემთხვევა ❌",
       "PasswordsMatch": "პაროლები ემთხვევა ✅",
       "MinLengthError": "პაროლი უნდა შეიცავდეს მინიმუმ 6 სიმბოლოს ❌",
       "ResetSuccess": "პაროლი წარმატებით განახლდა ✅"
+   },
+   "order_details": {
+      "title": "შეკვეთის დეტალები",
+      "user": "მომხმარებელი",
+      "email": "ელ.ფოსტა",
+      "products": "პროდუქტები",
+      "total": "ჯამი",
+      "address": "მისამართი",
+      "date": "თარიღი",
+      "status": "სტატუსი",
+      "accept": "დადასტურება",
+      "reject": "უარყოფა",
+      "close": "დახურვა"
    },
    "admin": {
       "title": "პროდუქტების მართვა",

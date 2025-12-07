@@ -1,92 +1,66 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IBasket } from '../models/basket.model';
-import { IPartialProduct } from '../models/partial-product.model';
+
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
+import { IBasketItem } from '../models/basketItem.model';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class BasketService {
-  private apiUrl = "https://localhost:7183/api";
+  private apiUrl = "https://localhost:7183/api/baskets";
 
-  public basketItemsSubject = new BehaviorSubject<IBasket[]>([]);
-  public basketItems$ = this.basketItemsSubject.asObservable();
+  public basketSubject = new BehaviorSubject<IBasket | null>(null);
+  public basket$ = this.basketSubject.asObservable();
 
   public totalPriceSubject = new BehaviorSubject<number>(0);
   public totalPrice$ = this.totalPriceSubject.asObservable();
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
-  loadBasket() {
+  // GET /api/baskets
+  loadBasket(): void {
     if (!this.authService.isLoggedIn()) {
-      this.basketItemsSubject.next([]);
+      this.basketSubject.next(null);
       this.totalPriceSubject.next(0);
       return;
     }
 
-    const url = `${this.apiUrl}/Baskets/GetAll`;
     const headers = this.authService.getAuthHeaders();
-
-    this.http.get<IBasket[]>(url, headers).subscribe({
-      next: (items) => {
-        this.basketItemsSubject.next(items);
-        this.calculateTotal(items);
+    this.http.get<IBasket>(`${this.apiUrl}`, headers).subscribe({
+      next: (basket) => {
+        this.basketSubject.next(basket);
+        this.calculateTotal(basket);
       },
-      error: (err) => {
-        console.error('Failed to load basket', err);
-      }
+      error: (err) => console.error('Failed to load basket', err)
     });
   }
 
-
-
-  getBasket(): Observable<IBasket[]> {
-    return this.basketItems$;
-  }
-
-
-  addToBasket(product: IPartialProduct, newBasketItem: IBasket): Observable<void> {
-    const url = `${this.apiUrl}/Baskets/AddToBasket`;
+  // POST /api/baskets/addToBasket
+  addToBasket(item: Partial<IBasketItem>): Observable<IBasket> {
     const headers = this.authService.getAuthHeaders();
-    const userId = this.authService.getUserId();
-    const payload = { ...product, userId };
-
-    return new Observable<void>((observer) => {
-      this.http.post<void>(url, payload, headers).subscribe({
-        next: () => {
-          const updatedItems = [...this.basketItemsSubject.value, newBasketItem];
-          this.basketItemsSubject.next(updatedItems);
-          this.calculateTotal(updatedItems);
-          observer.next();
+    return new Observable<IBasket>((observer) => {
+      this.http.post<IBasket>(`${this.apiUrl}/addToBasket`, item, headers).subscribe({
+        next: (basket) => {
+          this.basketSubject.next(basket);
+          this.calculateTotal(basket);
+          observer.next(basket);
           observer.complete();
         },
-        error: (err) => {
-          console.error('Add to basket failed', err);
-          observer.error(err);
-        }
+        error: (err) => observer.error(err)
       });
     });
   }
 
-  updateProduct(updatedItem: IPartialProduct, updatedBasketItem: IBasket): Observable<void> {
-    const url = `${this.apiUrl}/Baskets/UpdateBasket`;
+  // PUT /api/baskets/updateBasket/{itemId}
+  updateBasket(itemId: number, dto: Partial<IBasketItem>): Observable<void> {
     const headers = this.authService.getAuthHeaders();
-    const userId = this.authService.getUserId();
-
-    const payload = { ...updatedItem, userId };
-
     return new Observable<void>((observer) => {
-      this.http.put<void>(url, payload, headers).subscribe({
+      this.http.put<void>(`${this.apiUrl}/updateBasket/${itemId}`, dto, headers).subscribe({
         next: () => {
-          const currItems = this.basketItemsSubject.value;
-          const updatedItems = currItems.map(item =>
-            item.product.id === updatedBasketItem.product.id ? updatedBasketItem : item
-          );
-          this.basketItemsSubject.next(updatedItems);
-          this.calculateTotal(updatedItems);
+          this.loadBasket(); // reload basket after update
           observer.next();
           observer.complete();
         },
@@ -95,17 +69,13 @@ export class BasketService {
     });
   }
 
-  deleteProduct(item: IBasket): Observable<void> {
-    const url = `${this.apiUrl}/Baskets/DeleteProduct/${item.product.id}`;
+  // DELETE /api/baskets/items/{productId}
+  deleteProduct(productId: number): Observable<void> {
     const headers = this.authService.getAuthHeaders();
-
     return new Observable<void>((observer) => {
-      this.http.delete<void>(url, headers).subscribe({
+      this.http.delete<void>(`${this.apiUrl}/items/${productId}`, headers).subscribe({
         next: () => {
-          const currItems = this.basketItemsSubject.value;
-          const updatedItems = currItems.filter(currItem => item.product.id !== currItem.product.id);
-          this.basketItemsSubject.next(updatedItems);
-          this.calculateTotal(updatedItems);
+          this.loadBasket(); // reload basket after delete
           observer.next();
           observer.complete();
         },
@@ -114,28 +84,13 @@ export class BasketService {
     });
   }
 
-  isInBasket(productId: number): boolean {
-    if (productId == null) return false;
-    const items = this.basketItemsSubject.getValue();
-    return items.some(item => item?.product?.id === productId);
-  }
-
-
-
-  calculateTotal(items: IBasket[]) {
-    const total = items.reduce((a, b) => a + b.price * b.quantity, 0);
-    this.totalPriceSubject.next(total);
-  }
-
-
+  // DELETE /api/baskets
   clearBasket(): Observable<void> {
-    const url = `${this.apiUrl}/Baskets/Clear`;
     const headers = this.authService.getAuthHeaders();
-
     return new Observable<void>((observer) => {
-      this.http.delete<void>(url, headers).subscribe({
+      this.http.delete<void>(`${this.apiUrl}/ClearBasket`, headers).subscribe({
         next: () => {
-          this.basketItemsSubject.next([]);
+          this.basketSubject.next(null);
           this.totalPriceSubject.next(0);
           observer.next();
           observer.complete();
@@ -145,5 +100,19 @@ export class BasketService {
     });
   }
 
+  // Helpers
+  private calculateTotal(basket: IBasket | null): void {
+    if (!basket) {
+      this.totalPriceSubject.next(0);
+      return;
+    }
+    const total = basket.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    this.totalPriceSubject.next(total);
+  }
 
+  isInBasket(productId: number): boolean {
+    const basket = this.basketSubject.getValue();
+    if (!basket) return false;
+    return basket.items.some(item => item.product.id === productId);
+  }
 }

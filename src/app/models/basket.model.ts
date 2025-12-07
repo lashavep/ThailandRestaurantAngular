@@ -1,7 +1,8 @@
-import { IProduct } from "./product.model";
+import { IBasketItem } from "./basketItem.model";
+
 
 export interface IBasket {
-    quantity: number,
-    price: number,
-    product: IProduct
-};
+  id: number;
+  userId: number;
+  items: IBasketItem[];
+}

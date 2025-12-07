@@ -1,56 +1,47 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IBasket } from '../../models/basket.model';
-import { IPartialProduct } from '../../models/partial-product.model';
 import { BasketService } from '../../services/basket.service';
-
+import { IBasketItem } from '../../models/basketItem.model';
 
 @Component({
-    selector: 'app-cart-item',
-    standalone: true,
-    imports: [CommonModule, FormsModule],
-    templateUrl: './cart-item.component.html',
-    styleUrl: './cart-item.component.css'
+  selector: 'app-cart-item',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './cart-item.component.html',
+  styleUrls: ['./cart-item.component.css']
 })
 export class CartItemComponent {
-    @Input() cartItem !: IBasket;
-    @Input() quantity !: number;
+  @Input() cartItem!: IBasketItem;   
+  @Output() delete = new EventEmitter<IBasketItem>();
 
-    @Output() delete = new EventEmitter<IBasket>();
+  constructor(private basketService: BasketService) {}
 
-    constructor(private basketService:BasketService) { }
+  updateQuantity(newQnty: number) {
+    if (newQnty <= 99 && newQnty >= 1) {
+      this.cartItem.quantity = newQnty;
 
-    updateQuantity(newQnty: number) {
-        if (newQnty <= 99 && newQnty >= 1) {
-            this.quantity = newQnty;
-            const updatedProduct: IPartialProduct = {
-                quantity: this.quantity,
-                price: this.cartItem.price,
-                productId: this.cartItem.product.id
-            }
-            const updatedBasketItem: IBasket = {
-                ...this.cartItem,
-                quantity: this.quantity
-            }
-            this.basketService.updateProduct(updatedProduct, updatedBasketItem).subscribe();
-        }
+      const payload = {
+        quantity: this.cartItem.quantity,
+        price: this.cartItem.price,
+        productId: this.cartItem.productId
+      };
+
+      this.basketService.updateBasket(this.cartItem.id, payload).subscribe();
     }
+  }
 
-    changeQty(event: any) {
-        if (this.quantity >= 99) {
-            this.quantity = 99;
-        }
-        if (this.quantity < 1) {
-            this.quantity = 1;
-        }
-        if (this.quantity === null) {
-            this.quantity = 1;
-        }
-        event.target.value = this.quantity;
+  changeQty(event: any) {
+    if (this.cartItem.quantity >= 99) {
+      this.cartItem.quantity = 99;
     }
+    if (this.cartItem.quantity < 1 || this.cartItem.quantity == null) {
+      this.cartItem.quantity = 1;
+    }
+    event.target.value = this.cartItem.quantity;
+  }
 
-    deleteProduct(item: IBasket) {
-        this.delete.emit(item);
-    }
+  deleteProduct(item: IBasketItem) {
+    this.delete.emit(item);
+  }
 }

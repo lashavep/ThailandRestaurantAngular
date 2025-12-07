@@ -5,13 +5,16 @@ import { OrderService } from '../../services/order.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { IBasket } from '../../models/basket.model';
+import { IBasketItem } from '../../models/basketItem.model';
+
 
 @Component({
   selector: 'app-payment',
   standalone: true,
   imports: [FormsModule],
   templateUrl: './payment.component.html',
-  styleUrl: './payment.component.css'
+  styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent {
   cardName = '';
@@ -24,19 +27,18 @@ export class PaymentComponent {
     private basketService: BasketService,
     private orderService: OrderService,
     private authService: AuthService
-  ) { }
+  ) {}
 
   formatExpiryDate() {
     let value = this.expiryDate.replace(/\D/g, '');
-
     if (value.length >= 2) {
       value = value.substring(0, 2) + '/' + value.substring(2, 4);
     }
-
     this.expiryDate = value;
   }
 
   checkout() {
+    // ვალიდაციები
     if (!this.cardName || !this.cardNumber || !this.expiryDate || !this.cvv) {
       Swal.fire({ title: 'Missing Information', text: 'Please fill out all required fields.', icon: 'warning' });
       return;
@@ -71,11 +73,17 @@ export class PaymentComponent {
       return;
     }
 
-    const items = this.basketService.basketItemsSubject.value;
+    // კალათის ამოღება
+    const basket: IBasket | null = this.basketService.basketSubject.value;
+    if (!basket || basket.items.length === 0) {
+      Swal.fire({ title: 'Empty Cart', text: 'Your basket is empty.', icon: 'warning' });
+      return;
+    }
+
     const total = this.basketService.totalPriceSubject.value;
 
     const order = {
-      items: items.map(i => ({
+      items: basket.items.map((i: IBasketItem) => ({
         name: i.product.name,
         quantity: i.quantity,
         price: i.price

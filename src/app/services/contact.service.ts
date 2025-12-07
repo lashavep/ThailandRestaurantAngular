@@ -9,7 +9,7 @@ export class ContactService {
   constructor(private http: HttpClient) {}
 
   sendContactForm(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/Send`, data);
+    return this.http.post(`${this.apiUrl}/SendMailToAdmin`, data);
   }
 }
 

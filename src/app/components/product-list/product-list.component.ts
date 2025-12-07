@@ -3,19 +3,19 @@ import { CommonModule } from '@angular/common';
 import { IProduct } from '../../models/product.model';
 import { BasketService } from '../../services/basket.service';
 import { IPartialProduct } from '../../models/partial-product.model';
-import { IBasket } from '../../models/basket.model';
 import { ProductComponent } from '../product/product.component';
 import Swal from 'sweetalert2';
-import { timer } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { IBasketItem } from '../../models/basketItem.model';
+
 @Component({
   selector: 'app-product-list',
   standalone: true,
   imports: [ProductComponent, CommonModule, TranslateModule],
   templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.scss'
+  styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent {
   @Input() products!: IProduct[];
@@ -26,7 +26,12 @@ export class ProductListComponent {
   loaders = Array(12).fill(0);
   addedProductIds: number[] = [];
 
-  constructor(public basketService: BasketService, public router: Router, private authService: AuthService, public translateService: TranslateService) { }
+  constructor(
+    public basketService: BasketService,
+    public router: Router,
+    private authService: AuthService,
+    public translateService: TranslateService
+  ) {}
 
   ngOnInit() {
     this.basketService.loadBasket();
@@ -44,8 +49,6 @@ export class ProductListComponent {
   goToCart() {
     this.router.navigate(['/cart']);
   }
-
-
 
   addToCart(product: IProduct) {
     if (!product || product.id == null) {
@@ -84,20 +87,25 @@ export class ProductListComponent {
       return;
     }
 
+    // DTO payload
     const newProd: IPartialProduct = {
       quantity: 1,
       price: product.price,
       productId: product.id
     };
 
-    const newBasketItem: IBasket = {
+    // BasketItem model
+    const newBasketItem: IBasketItem = {
+      id: 0, // backend შექმნის
+      basketId: 0,
+      productId: product.id,
+      product: product,
       quantity: 1,
-      price: product.price,
-      product: product
+      price: product.price
     };
 
-    this.basketService.addToBasket(newProd, newBasketItem).subscribe({
-      next: () => {
+    this.basketService.addToBasket(newProd).subscribe({
+      next: basket => {
         this.addedProductIds.push(product.id);
         Swal.fire({
           title: this.translateService.instant('productList.addedSuccess'),
@@ -106,7 +114,7 @@ export class ProductListComponent {
           timer: 1000
         });
       },
-      error: (err) => {
+      error: err => {
         console.error('Failed to add to basket', err);
         Swal.fire({
           title: this.translateService.instant('productList.errorTitle'),

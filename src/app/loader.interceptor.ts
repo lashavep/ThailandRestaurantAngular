@@ -8,7 +8,7 @@ export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
   const loaderService = inject(LoaderService);
   const authService = inject(AuthService);
 
-  const isProductsRequest = req.url.includes('https://localhost:7183/api/Products/GetAll');
+  const isProductsRequest = req.url.includes('https://localhost:7183/api/Products/GetAllProduct');
 
   if (isProductsRequest) {
     loaderService.show();

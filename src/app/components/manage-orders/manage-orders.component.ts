@@ -1,3 +1,9 @@
+// ManageOrdersComponent
+// გამოიყენება შეკვეთების ადმინისტრატორის მიერ შეკვეთების მართვისთვის.
+// OrderService.getOrdersByStatus() იღებს შეკვეთებს სტატუსის მიხედვით (/api/orders/GetAllOrders).
+// OrderService.acceptOrder() ადასტურებს შეკვეთას.
+// OrderService.rejectOrder() უარყოფს შეკვეთას.
+
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';

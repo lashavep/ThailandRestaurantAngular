@@ -1,3 +1,11 @@
+// CartComponent
+// გამოიყენება კალათის მართვისთვის.
+// BasketService.getBasket() იღებს კალათის მიმდინარე მდგომარეობას.
+// BasketService.addProductToBasket() ამატებს პროდუქტს.
+// BasketService.deleteProductFromBasket() შლის პროდუქტს.
+// BasketService.clearBasket() ასუფთავებს მთელ კალათას.
+
+
 import { Component } from '@angular/core';
 import { BasketService } from '../../services/basket.service';
 import { CartWelcomeComponent } from '../cart-welcome/cart-welcome.component';

@@ -46,14 +46,14 @@ export class AdminService {
   }
 
   deleteUser(id: number): Observable<string> {
-    return this.http.post(`${this.userApi}/delete/${id}`, null, {
+    return this.http.delete(`${this.userApi}/delete/${id}`, {
       ...this.auth.getAuthHeaders(),
       responseType: 'text'
     });
   }
 
   registerUser(dto: any): Observable<any> {
-    return this.http.post(`${this.userApi}/register`, dto, this.auth.getAuthHeaders());
+    return this.http.post(`${this.userApi}/UserRegister`, dto, this.auth.getAuthHeaders());
   }
 
   promoteUserByEmail(email: string, newRole: string): Observable<string> {

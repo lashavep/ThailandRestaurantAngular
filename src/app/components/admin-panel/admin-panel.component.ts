@@ -1,3 +1,9 @@
+// AdminPanelComponent
+// გამოიყენება ადმინისტრატორის პანელისთვის.
+// AdminService.getAllUsers() იღებს ყველა მომხმარებელს (/api/Users).
+// AdminService.manageProducts() მართავს პროდუქტებს (/api/Products).
+// AdminService.promoteUserByEmail() მომხმარებელს ანიჭებს ადმინისტრატორის როლს (/api/Admin/promoteUser).
+
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';

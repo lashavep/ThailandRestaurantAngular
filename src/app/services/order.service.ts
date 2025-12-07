@@ -1,47 +1,64 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  private baseUrl = 'https://localhost:7183';
+
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   createOrder(order: any) {
-    return this.http.post('https://localhost:7183/api/orders/placeOrder', order, this.authService.getAuthHeaders());
+    return this.http.post(
+      `${this.baseUrl}/api/orders/placeOrder`,
+      order,
+      this.authService.getAuthHeaders()
+    );
   }
 
   getOrders(): Observable<any[]> {
-    const userId = this.authService.getUserId();
-    return this.http.get<any[]>(`https://localhost:7183/api/orders/my`, this.authService.getAuthHeaders());
+    return this.http.get<any[]>(
+      `${this.baseUrl}/api/orders/myOrders`,
+      this.authService.getAuthHeaders()
+    );
   }
 
   getAllOrders(page: number, pageSize: number): Observable<any> {
+    if (!this.authService.isLoggedIn()) {
+
+      return of({ items: [], totalCount: 0 });
+    }
     return this.http.get<any>(
-      `https://localhost:7183/api/orders/all?page=${page}&pageSize=${pageSize}`,
+      `${this.baseUrl}/api/orders/GetAllOrders?page=${page}&pageSize=${pageSize}`,
       this.authService.getAuthHeaders()
     );
   }
 
   getOrdersByStatus(status: string, page: number, pageSize: number): Observable<any> {
+    if (!this.authService.isLoggedIn()) {
+      return of({ items: [], totalCount: 0 });
+    }
     return this.http.get<any>(
-      `https://localhost:7183/api/orders/all?status=${status}&page=${page}&pageSize=${pageSize}`,
+      `${this.baseUrl}/api/orders/GetAllOrders?status=${encodeURIComponent(status)}&page=${page}&pageSize=${pageSize}`,
       this.authService.getAuthHeaders()
     );
   }
 
-
   acceptOrder(orderId: number): Observable<any> {
     return this.http.post(
-      `https://localhost:7183/api/orders/acceptOrder/${orderId}`,
+      `${this.baseUrl}/api/orders/acceptOrder/${orderId}`,
       {},
       this.authService.getAuthHeaders()
     );
   }
 
-  rejectOrder(orderId: number) {
-
-    return this.http.post(`https://localhost:7183/api/orders/rejectOrder/${orderId}`, {}, this.authService.getAuthHeaders());
+  rejectOrder(orderId: number): Observable<any> {
+    return this.http.post(
+      `${this.baseUrl}/api/orders/rejectOrder/${orderId}`,
+      {},
+      this.authService.getAuthHeaders()
+    );
   }
 
 
@@ -53,10 +70,12 @@ export class OrderService {
   }
 
   loadPendingCount() {
-  this.getOrdersByStatus('Pending', 1, 100).subscribe(res => {
-    this.setPendingCount(res.totalCount);
-  });
-}
-
-
+    this.getOrdersByStatus('Pending', 1, 100).subscribe(res => {
+      if (res) {
+        this.setPendingCount(res.totalCount ?? 0);
+      } else {
+        this.setPendingCount(0);
+      }
+    });
+  }
 }

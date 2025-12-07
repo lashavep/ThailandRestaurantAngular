@@ -1,3 +1,9 @@
+// SignupComponent
+// გამოიყენება ახალი მომხმარებლის რეგისტრაციისთვის.
+// SignupService.signup() აგზავნის მონაცემებს API-ზე (/api/Auth/sign_up)
+// და ქმნის ახალ ანგარიშს სისტემაში.
+
+
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';

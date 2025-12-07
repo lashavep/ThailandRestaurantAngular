@@ -1,3 +1,8 @@
+// HomeComponent
+// გამოიყენება მთავარი გვერდის საჩვენებლად.
+// აქ მომხმარებელი ხედავს პროდუქტების სიას, კატეგორიებს და რეკომენდაციებს.
+// CategoriesService.getCategories() იღებს კატეგორიებს API-დან (/api/Categories).
+
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { CategoriesComponent } from '../../components/categories/categories.component';
 import { FilterComponent } from '../../components/filter/filter.component';

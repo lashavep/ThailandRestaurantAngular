@@ -39,7 +39,7 @@ export const routes: Routes = [
   { path: 'loader', component: LoaderComponent, title: 'Loader' },
   { path: 'orders', component: OrdersComponent, canActivate: [authGuard], data: { roles: ['User', 'Admin'] } },
   { path: 'profile', component: ProfileComponent, canActivate: [authGuard], data: { roles: ['User', 'Admin'] } },
-  { path: 'change-password', component: ChangePasswordComponent, canActivate: [authGuard], data: { roles: ['User', 'Admin'] } },
+  { path: 'change-password', component: ChangePasswordComponent},
   {
     path: 'admin',
     component: AdminPanelComponent,

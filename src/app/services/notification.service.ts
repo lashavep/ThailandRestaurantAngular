@@ -1,3 +1,7 @@
+// გამოიყენება რეალურ დროში შეტყობინებების საჩვენებლად.
+// NotificationService.startConnection() უკავშირდება SignalR Hub-ს.
+// NotificationService.loadPersistedNotifications() იღებს შეტყობინებებს API-დან (/api/Notifications).
+
 import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { BehaviorSubject } from 'rxjs';
@@ -27,7 +31,7 @@ export class NotificationService {
   }
 
   loadPersistedNotifications() {
-    this.http.get<any[]>('https://localhost:7183/api/Notifications/GetAll')
+    this.http.get<any[]>('https://localhost:7183/api/Notifications/GetAllNotifications')
       .subscribe(nots => {
         this.notificationsSubject.next(nots);
       });
