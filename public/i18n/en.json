@@ -271,13 +271,28 @@
                 "CodePlaceholder": "Enter numeric code (6 digits)",
                 "Submit": "Change Password",
                 "PasswordMismatchError": "Passwords do not match ❌",
+                "EnterEmailFirst":"Enter Email to continue",
+                "FailedToSendCode": "Unable to send code",
                 "PasswordsMatch": "Passwords match ✅",
                 "SuccessMessage": "Your password has been changed successfully.",
                 "ErrorMessage": "Something went wrong. Please try again.",
                 "ConfirmPasswordLabel": "Confirm Password",
                 "ConfirmPasswordPlaceholder": "Re-enter your new password",
                 "MinLengthError": "Password must be at least 6 characters long ❌",
-                "ResetSuccess":"Password reset successful ✅"
+                "ResetSuccess": "Password reset successful ✅"
+        },
+        "order_details": {
+                "title": "Order Details",
+                "user": "User",
+                "email": "Email",
+                "products": "Products",
+                "total": "Total",
+                "address": "Address",
+                "date": "Date",
+                "status": "Status",
+                "accept": "Accept",
+                "reject": "Reject",
+                "close": "Close"
         },
         "admin": {
                 "confirmAccept": "Are you sure you want to accept this order?",

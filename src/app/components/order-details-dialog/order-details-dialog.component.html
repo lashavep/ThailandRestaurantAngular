@@ -1,22 +1,28 @@
-<h2>Order Details</h2>
+<h2>{{ 'order_details.title' | translate }}</h2>
 
-<p><strong>User:</strong> {{ orderDetails?.user?.firstName }}</p>
-<p><strong>Email:</strong> {{ orderDetails?.user?.email }}</p>
+<p><strong>{{ 'order_details.user' | translate }}:</strong> {{ orderDetails?.user?.firstName }}</p>
+<p><strong>{{ 'order_details.email' | translate }}:</strong> {{ orderDetails?.user?.email }}</p>
 
-<p><strong>Products:</strong></p>
+<p><strong>{{ 'order_details.products' | translate }}:</strong></p>
 <ul>
   <li *ngFor="let item of orderDetails?.products">
-    {{ item.name }} (x{{ item.quantity }}) — {{ item.price | currency: "₾" }}
+    {{ item.name }} (x{{ item.quantity }}) — {{ item.price | currency:"₾" }}
   </li>
 </ul>
-<p><strong>Total:</strong> {{ orderDetails?.total | currency: "₾" }}</p>
-<p><strong>Address:</strong> {{ orderDetails?.address }}</p>
-<p><strong>Date:</strong> {{ orderDetails?.date | date:'short' }}</p>
-<p><strong>Status:</strong> {{ orderDetails?.status }}</p>
+
+<p><strong>{{ 'order_details.total' | translate }}:</strong> {{ orderDetails?.total | currency:"₾" }}</p>
+<p><strong>{{ 'order_details.address' | translate }}:</strong> {{ orderDetails?.address }}</p>
+<p><strong>{{ 'order_details.date' | translate }}:</strong> {{ orderDetails?.date | date:'short' }}</p>
+<p><strong>{{ 'order_details.status' | translate }}:</strong> {{ orderDetails?.status }}</p>
 
 <div class="dialog-actions">
-  <button *ngIf="orderDetails?.status === 'Pending'" (click)="acceptOrder()">Accept</button>
-  <button *ngIf="orderDetails?.status === 'Pending'" (click)="rejectOrder()">Reject</button>
-  <button (click)="close()">Close</button>
+  <button *ngIf="orderDetails?.status === 'Pending'" (click)="acceptOrder()">
+    {{ 'order_details.accept' | translate }}
+  </button>
+  <button *ngIf="orderDetails?.status === 'Pending'" (click)="rejectOrder()">
+    {{ 'order_details.reject' | translate }}
+  </button>
+  <button (click)="close()">
+    {{ 'order_details.close' | translate }}
+  </button>
 </div>
-

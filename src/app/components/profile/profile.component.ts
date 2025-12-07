@@ -1,3 +1,8 @@
+// ProfileComponent
+// გამოიყენება მომხმარებლის პროფილის ნახვისა და განახლებისთვის.
+// AuthService.getProfile() იღებს მონაცემებს API-დან (/api/Users)
+// AuthService.updateProfile() კი ანახლებს პროფილის ინფორმაციას.
+
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../services/auth.service';
@@ -38,12 +43,13 @@ export class ProfileComponent implements OnInit {
       },
       error: (err) => {
         console.error(err);
-        Swal.fire('❌', 'Update Failed', 'error');
+        const msg = err.error?.message || 'Update Failed';
+        Swal.fire('❌', msg, 'error');
       }
     });
   }
   logPromo() {
-  console.log('Promo subscription:', this.profile.isSubscribedToPromo);
-}
+    console.log('Promo subscription:', this.profile.isSubscribedToPromo);
+  }
 
 }

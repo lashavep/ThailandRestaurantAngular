@@ -1,21 +1,28 @@
 <div class="cart-list">
-    <div *ngFor="let item of pagedItems">
-        <app-cart-item [cartItem]="item" [quantity]="item.quantity" (delete)="deleteItem($event)">
-        </app-cart-item>
-    </div>
+  <app-cart-item
+    *ngFor="let item of pagedItems"
+    [cartItem]="item"
+    (delete)="deleteItem($event)">
+  </app-cart-item>
 </div>
 
-<div class="pagination" *ngIf="cartItems.length > pageSize">
-    <button (click)="changePage(page - 1)" [disabled]="page === 1">
-        {{ 'pagination.Prev' | translate }}
-    </button>
+<div class="pagination" *ngIf="basket && basket.items.length > pageSize">
+  <button (click)="changePage(page - 1)" [disabled]="page === 1">
+    {{ 'pagination.prev' | translate }}
+  </button>
 
-    <span>
-        {{ 'pagination.Page' | translate }} {{ page }}
-        {{ 'pagination.Of' | translate }} {{ totalPages }}
-    </span>
+  <span>
+    {{ 'pagination.page' | translate }} {{ page }}
+    {{ 'pagination.of' | translate }} {{ totalPages }}
+  </span>
 
-    <button (click)="changePage(page + 1)" [disabled]="page === totalPages">
-        {{ 'pagination.Next' | translate }}
-    </button>
+  <button (click)="changePage(page + 1)" [disabled]="page === totalPages">
+    {{ 'pagination.next' | translate }}
+  </button>
 </div>
+
+<!-- ჯამური ფასი -->
+<!-- <div class="basket-total" *ngIf="basket">
+  <strong>{{ 'basket.total' | translate }}:</strong>
+  {{ basketService.totalPrice$ | async | currency:"₾" }}
+</div> -->

@@ -3,13 +3,14 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-details-dialog',
   standalone: true,
   templateUrl: './order-details-dialog.component.html',
   styleUrls: ['./order-details-dialog.component.css'],
-  imports: [CommonModule]
+  imports: [CommonModule, TranslateModule]
 
 })
 export class OrderDetailsDialogComponent implements OnInit {
@@ -32,24 +33,24 @@ export class OrderDetailsDialogComponent implements OnInit {
 
 
   acceptOrder() {
-  const confirmed = window.confirm("ნამდვილად გსურთ შეკვეთის დადასტურება?");
-  if (!confirmed) return;
+    const confirmed = window.confirm("ნამდვილად გსურთ შეკვეთის დადასტურება?");
+    if (!confirmed) return;
 
-  this.http.post(
-    `https://localhost:7183/api/orders/acceptOrder/${this.order.orderId}`,
-    {},
-    this.authService.getAuthHeaders()
-  ).subscribe({
-    next: () => {
-      this.dialogRef.close(true);
-      alert("შეკვეთა დადასტურებულია და მომხმარებელს გაეგზავნა შეტყობინება!");
-    },
-    error: (err) => {
-      console.error("Error accepting order:", err);
-      alert("შეკვეთის დადასტურება ვერ მოხერხდა. სცადეთ თავიდან.");
-    }
-  });
-}
+    this.http.post(
+      `https://localhost:7183/api/orders/acceptOrder/${this.order.orderId}`,
+      {},
+      this.authService.getAuthHeaders()
+    ).subscribe({
+      next: () => {
+        this.dialogRef.close(true);
+        alert("შეკვეთა დადასტურებულია და მომხმარებელს გაეგზავნა შეტყობინება!");
+      },
+      error: (err) => {
+        console.error("Error accepting order:", err);
+        alert("შეკვეთის დადასტურება ვერ მოხერხდა. სცადეთ თავიდან.");
+      }
+    });
+  }
 
 
   rejectOrder() {

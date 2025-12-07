@@ -12,15 +12,15 @@ export class CategoriesService {
     constructor(private http: HttpClient) { }
 
     getCategories(): Observable<ICategory[]> {
-        const url = `${this.apiUrl}/GetAll`
+        const url = `${this.apiUrl}/GetAllCategory`
         return this.http.get<ICategory[]>(url);
     }
     addCategory(name: string): Observable<ICategory> {
-        return this.http.post<ICategory>(`${this.apiUrl}/Add`, {name});
+        return this.http.post<ICategory>(`${this.apiUrl}/AddCategory`, {name});
     }
 
 
     deleteCategory(id: number): Observable<any> {
-        return this.http.delete(`${this.apiUrl}/Delete/${id}`);
+        return this.http.delete(`${this.apiUrl}/DeleteCategory/${id}`);
     }
 }

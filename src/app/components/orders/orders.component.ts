@@ -1,3 +1,7 @@
+// OrdersComponent
+// გამოიყენება მომხმარებლის შეკვეთების სანახავად.
+// OrderService.getOrders() იღებს შეკვეთების სიას API-დან (/api/orders/myOrders).
+
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { TranslateModule } from '@ngx-translate/core';

@@ -4,46 +4,51 @@ import { IBasket } from '../../models/basket.model';
 import { BasketService } from '../../services/basket.service';
 import { CartItemComponent } from '../cart-item/cart-item.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { IBasketItem } from '../../models/basketItem.model';
 
 @Component({
-    selector: 'app-cart-item-list',
-    standalone: true,
-    imports: [CartItemComponent, CommonModule, TranslateModule],
-    templateUrl: './cart-itemlist.component.html',
-    styleUrl: './cart-itemlist.component.css'
+  selector: 'app-cart-item-list',
+  standalone: true,
+  imports: [CartItemComponent, CommonModule, TranslateModule],
+  templateUrl: './cart-itemlist.component.html',
+  styleUrls: ['./cart-itemlist.component.css']
 })
 export class CartItemListComponent {
-    cartItems: IBasket[] = [];
-    page = 1;
-    pageSize = 5;
+  basket: IBasket | null = null;        // ერთი Basket ობიექტი
+  page = 1;
+  pageSize = 5;
 
-    constructor(private basketService: BasketService) { }
+  constructor(public basketService: BasketService) {}
 
-    ngOnInit(): void {
-        this.getBasket();
-    }
+  ngOnInit(): void {
+    this.loadBasket();
+  }
 
-    getBasket(): void {
-        this.basketService.getBasket().subscribe(basket => this.cartItems = basket);
-    }
+  loadBasket(): void {
+    this.basketService.basket$.subscribe(basket => {
+      this.basket = basket;
+    });
+  }
 
-    deleteItem(item: IBasket) {
-        this.basketService.deleteProduct(item).subscribe();
-    }
+  deleteItem(item: IBasketItem) {
+    this.basketService.deleteProduct(item.productId).subscribe();
+  }
 
-    get pagedItems(): IBasket[] {
-        const start = (this.page - 1) * this.pageSize;
-        return this.cartItems.slice(start, start + this.pageSize);
-    }
+  get pagedItems(): IBasketItem[] {
+    if (!this.basket) return [];
+    const start = (this.page - 1) * this.pageSize;
+    return this.basket.items.slice(start, start + this.pageSize);
+  }
 
-    get totalPages(): number {
-        return Math.ceil(this.cartItems.length / this.pageSize);
-    }
+  get totalPages(): number {
+    if (!this.basket) return 0;
+    return Math.ceil(this.basket.items.length / this.pageSize);
+  }
 
-    changePage(newPage: number) {
-        if (newPage < 1) return;
-        const maxPage = Math.ceil(this.cartItems.length / this.pageSize);
-        if (newPage > maxPage) return;
-        this.page = newPage;
-    }
+  changePage(newPage: number) {
+    if (newPage < 1) return;
+    const maxPage = this.totalPages;
+    if (newPage > maxPage) return;
+    this.page = newPage;
+  }
 }

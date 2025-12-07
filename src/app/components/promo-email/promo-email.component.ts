@@ -1,3 +1,7 @@
+// PromoEmailComponent
+// გამოიყენება პრომო იმეილების გასაგზავნად.
+// AdminService.sendPromoEmail() აგზავნის მასობრივ იმეილს API-ზე (/api/Admin/SendPromoEmail).
+
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';

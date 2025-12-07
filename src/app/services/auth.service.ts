@@ -124,11 +124,11 @@ export class AuthService {
   }
 
   getProfile(): Observable<any> {
-    return this.http.get('https://localhost:7183/api/Users/me', this.getAuthHeaders());
+    return this.http.get('https://localhost:7183/api/Users/GetUserProfile', this.getAuthHeaders());
   }
 
   updateProfile(data: any): Observable<any> {
-    return this.http.put('https://localhost:7183/api/Users/update', data, this.getAuthHeaders());
+    return this.http.put('https://localhost:7183/api/Users/UpdateUserProfile', data, this.getAuthHeaders());
   }
 
   getUserRole(): string {

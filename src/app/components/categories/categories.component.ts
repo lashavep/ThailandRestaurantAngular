@@ -1,3 +1,8 @@
+// CategoryComponent
+// გამოიყენება კონკრეტული კატეგორიის პროდუქტების სანახავად.
+// CategoriesService.getCategoryById() იღებს კატეგორიის დეტალებს.
+// ProductService.getProductsByCategory(categoryId) იღებს პროდუქტებს კონკრეტული კატეგორიიდან.
+
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { ICategory } from '../../models/category.model';
 import { CommonModule, NgClass } from '@angular/common';

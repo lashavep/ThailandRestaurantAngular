@@ -1,27 +1,35 @@
 <div class="cart-item">
-    <div class="left">
-        <div class="img-container">
-            <img [src]="cartItem.product.image" alt="Food Image">
-        </div>
-        <h4 class="name">{{ cartItem.product.name }}</h4>
+  <!-- მარცხენა მხარე -->
+  <div class="left">
+    <div class="img-container">
+      <img [src]="cartItem.product.image" [alt]="cartItem.product.name" />
     </div>
-    <div class="right">
-        <div class="item-details">
-            <div class="detail">
-                <div class="quantity">
-                    <div class="change-btn" (click)="updateQuantity(quantity - 1)">
-                        <span>&#8722;</span>
-                    </div>
-                    <input type="number" name="quantity" id="quantity-inp" [value]="cartItem.quantity"
-                        [(ngModel)]="quantity" (input)="changeQty($event)" (change)="updateQuantity(quantity)">
-                    <div class="change-btn" (click)="updateQuantity(quantity + 1)">
-                        <span>&#43;</span>
-                    </div>
-                </div>
-            </div>
-            <p class="detail price">{{ cartItem.price | currency: "₾"}}</p>
-            <p class="detail total-price">{{ cartItem.price * cartItem.quantity | currency: "₾" }}</p>
-        </div>
-        <div class="delete-btn" (click)="deleteProduct(cartItem)"></div>
+    <h4 class="name">{{ cartItem.product.name }}</h4>
+  </div>
+
+  <!-- მარჯვენა მხარე -->
+  <div class="right">
+    <div class="item-details">
+      <!-- რაოდენობა -->
+      <div class="detail quantity">
+        <button class="change-btn" (click)="updateQuantity(cartItem.quantity - 1)">−</button>
+        <input type="number" min="1" max="99" [(ngModel)]="cartItem.quantity"
+               (change)="updateQuantity(cartItem.quantity)" />
+        <button class="change-btn" (click)="updateQuantity(cartItem.quantity + 1)">+</button>
+      </div>
+
+      <!-- ერთეულის ფასი -->
+      <div class="detail price">
+        <p>{{ cartItem.price | currency:'GEL':'symbol' }}</p>
+      </div>
+
+      <!-- ჯამური ფასი -->
+      <div class="detail total-price">
+        <p>{{ cartItem.price * cartItem.quantity | currency:'GEL':'symbol' }}</p>
+      </div>
     </div>
+
+    <!-- წაშლა -->
+    <button class="delete-btn" (click)="deleteProduct(cartItem)"></button>
+  </div>
 </div>

@@ -1,3 +1,8 @@
+// LoginComponent
+// გამოიყენება მომხმარებლის ავტორიზაციისთვის.
+// AuthService.login() ფუნქცია აგზავნის მოთხოვნას API-ზე (/api/Auth/sign_in)
+// და აბრუნებს JWT ტოკენს, რომლითაც ხდება სისტემაში შესვლა.
+
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
